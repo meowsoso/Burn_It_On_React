@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+
+
 import FlightSearch from './FlightSearch';
-const flight_id = 1;
 
 const Flights = () => {
   return (

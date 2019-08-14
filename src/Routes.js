@@ -11,8 +11,9 @@ import Flights from './components/Flights';
 const Routes = (
   <Router>
     <div>
+        <Route exact path="/" component={FlightSearch} />
         <Route path="/Flights/:id" component={ Flights } />
-        <Route extend path="/FlightSearch" component={ FlightSearch} />
+
     </div>
   </Router>
 );
