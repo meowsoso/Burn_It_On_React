@@ -1,41 +1,10 @@
 import React, { Component } from 'react';
-
 import axios from 'axios';
 
-
-class FlightSearch extends Component {
-  constructor(){
-    super();
-    this.state = {
-      // flights: [],
-      // flight_id: ""
-    };
-
-  }
-  // saveFlightID
-  // fetchPlanes(q1, q2){}
+const PlaneURL = 'http://7cb203e3.ngrok.io/planes.json';
 
 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ****** Child ***********************************************************
+// ****** CHILD: Flight Search *********************************************
 
 class SearchForm extends Component {
   constructor(){
@@ -47,18 +16,14 @@ class SearchForm extends Component {
     this._handleSubmit = this._handleSubmit.bind(this);
     this._handleOriginChange = this._handleOriginChange.bind(this);
     this._handleDestinationChange = this._handleDestinationChange.bind(this);
-
-    // this.NameOfHandler = this.NameOfHandler.bind(this);
-    // Submit button Handler
-    // Change / Search Handler
   }
+
   _handleOriginChange(event) {
-  this.setState({content: event.target.value});
+    this.setState({content: event.target.value});
   }
 
   _handleDestinationChange(event) {
-  this.setState({content: event.target.value});
-
+    this.setState({content: event.target.value});
   }
 
   _handleSubmit(event){
@@ -67,7 +32,55 @@ class SearchForm extends Component {
     this.setState({origin: ''});
     this.setState({destination: ''});
   }
-  // Handler1(event) {event.preventDefault}
-  // Handler2(event) {}
+  render() {
+      return (
+        <div>
+          <h2>FlightSearches</h2>
+          <SearchForm onSubmit = {this.fetchPlanes} component={this.Flights} />
+        </div>
+      );
+  }
 
 }
+//******************* PARENT: Flight Search *******************************
+class FlightSearch extends Component {
+  constructor(){
+    super();
+    this.state = {
+      flights: [],
+      plane_id: ""
+    };
+    this.fetchPlanes = this.fetchPlanes.bind(this);
+  }
+  saveFlightID = (s) => {
+    this.setState({
+      plane_id: s
+    });
+    this.props.storeFlightId(s);
+  }
+  // o = origin, d = destination
+  fetchPlanes(o, d){
+    axios.get(PlaneURL).then(function (results) {
+      let flightsarr = [];
+      for (let i = 0; i < results.data.length; i++) {
+        if (results.data[i].origin === o && results.data[i].destination === d) {
+            flightsarr.push(results.data[i]);
+            this.setState({flights: flightsarr});
+        }
+      }
+    }.bind(this));
+  }
+  render() {
+      return (
+        <div>
+        </div>
+      );
+  }
+}
+
+
+
+
+
+
+export default FlightSearch;
