@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import axios from 'axios';
 
-const SERVER_URL = 'http://7cb203e3.ngrok.io/flights.json';
-
+// const SERVER_URL = 'http://7cb203e3.ngrok.io/flights.json';
+const SERVER_URL = 'http://localhost:3000/flights.json'
 //******************* PARENT: Flight Search *******************************
 class FlightSearch extends Component {
   constructor(){
@@ -67,12 +69,18 @@ class SearchForm extends Component {
     }
   render() {
       return (
+        <div class="container">
+
 
           <form onSubmit = { this._handleSubmit }>
             <input type="search" placeholder="from" required onInput={ this._handleOriginChange } defaultValue="" />
             <input type="search" placeholder="to" required onInput={ this._handleDestinationChange } defaultValue="" />
-            <input type="submit" value="Search"/>
+            <input class="btn btn-primary" type="submit" value="Search"/>
           </form>
+
+        </div>
+
+
       );
   }
 }
@@ -82,14 +90,15 @@ class SearchForm extends Component {
 class Gallery extends Component {
   render(){
     return(
-      <div>
-        <table>
+      <div class="container">
+        <table class="table">
           <thead>
           <tr>
             <th>Flight No.</th>
             <th>Origin</th>
             <th>Destination</th>
             <th>Date</th>
+            <th>ID</th>
 
           </tr>
         </thead>
@@ -100,6 +109,7 @@ class Gallery extends Component {
             <td>{f.origin}</td>
             <td>{f.destination}</td>
             <td>{f.date}</td>
+            <td> <Link to={`/Flights/${f.id}`}>{f.id}</Link></td>
           </tr>
           </tbody>
             )}

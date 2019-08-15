@@ -1,24 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
 
 
 import FlightSearch from './FlightSearch';
-
+//NOTE: This Page is distinctive linked from FlightSearch to show each Flight ID
+// 6 by 40
 const Flights = () => {
   return (
-    <div>
+    <div class="container">
       <h2>Welcome to Flights</h2>
-      <p>To search for a Flight click this link <Link to="/FlightSearch">ID</Link></p>
-      <p>
-        <Link to="/flights/1">Luke Skywalker</Link>
-      </p>
-      <p>
-        <Link to="/flights/2">R2D2</Link>
-      </p>
+
+
+
     </div>
   )
 };
-
-
 export default Flights;
