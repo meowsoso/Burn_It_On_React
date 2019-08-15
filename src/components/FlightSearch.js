@@ -112,7 +112,7 @@ class Gallery extends Component {
             <td> <Link to={`/Flights/${f.id}`}>{f.id}</Link></td>
           </tr>
           </tbody>
-            )}
+        )}
             </table>
 
 
