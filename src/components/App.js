@@ -1,16 +1,17 @@
-import React from 'react';
-import '../App.css';
-import FlightSearch from './FlightSearch';
-import Flights from './Flights';
+import React from "react";
+import { CookiesProvider } from "react-cookie";
+import TokenAuth from "./TokenAuth.js";
 
-
-function App() {
-  return (
-    <div className="App">
-      <FlightSearch />
-      <Flights />
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <CookiesProvider>
+        <TokenAuth />
+      </CookiesProvider>
+    );
+  }
 }
+
+App.defaultProps = {};
 
 export default App;
