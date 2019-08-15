@@ -91,6 +91,9 @@ class Gallery extends Component {
   render(){
     return(
       <div class="container">
+        <nav>
+
+        </nav>
         <table class="table">
           <thead>
           <tr>
@@ -109,7 +112,7 @@ class Gallery extends Component {
             <td>{f.origin}</td>
             <td>{f.destination}</td>
             <td>{f.date}</td>
-            <td> <Link to={`/Flights/${f.id}`}>{f.id}</Link></td>
+            <td> <Link to={'/Seats'}>Click me</Link></td>
           </tr>
           </tbody>
         )}
